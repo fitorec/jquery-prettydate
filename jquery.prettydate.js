@@ -64,7 +64,7 @@ $.prettyDate = {
 			diff = ($.prettyDate.now().getTime() - date.getTime()) / 1000,
 			day_diff = Math.floor(diff / 86400);
 
-		if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 )
+		if ( isNaN(day_diff) || day_diff < 0 )
 			return;
 
 		var messages = $.prettyDate.messages;
@@ -76,7 +76,9 @@ $.prettyDate = {
 				diff < 86400 && messages.hours(Math.floor( diff / 3600 ))) ||
 			day_diff == 1 && messages.yesterday ||
 			day_diff < 7 && messages.days(day_diff) ||
-			day_diff < 31 && messages.weeks(Math.ceil( day_diff / 7 ));
+			day_diff < 31 && messages.weeks(Math.ceil( day_diff / 7 ))  ||
+			day_diff < 365 && messages.months(Math.ceil( day_diff / 31 )) ||
+			day_diff > 365 && messages.years(Math.ceil( day_diff / 365 ));
 	}
 
 };
@@ -89,7 +91,9 @@ $.prettyDate.messages = {
 	hours: $.prettyDate.template("{0} hours ago"),
 	yesterday: "Yesterday",
 	days: $.prettyDate.template("{0} days ago"),
-	weeks: $.prettyDate.template("{0} weeks ago")
+	weeks: $.prettyDate.template("{0} weeks ago"),
+	months: $.prettyDate.template("{0} mounths ago"),
+	years: $.prettyDate.template("{0} years ago")
 };
 
 $.fn.prettyDate = function(options) {

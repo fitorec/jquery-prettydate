@@ -7,5 +7,7 @@ $.prettyDate.messages = {
     hours: $.prettyDate.template("hace {0} horas"),
     yesterday: "ayer",
     days: $.prettyDate.template("hace {0} días"),
-    weeks: $.prettyDate.template("hace {0} semanas")
+    weeks: $.prettyDate.template("hace {0} semanas"),
+    months: $.prettyDate.template("hace {0} meses"),
+    years: $.prettyDate.template("hace {0} años")
 };
